@@ -1,0 +1,62 @@
+<div class="simple-post-preview">
+    <p>
+        <label for="{{title_form_id}}">Title:</label>
+        <input id="{{title_form_id}}" name="{{title_form_name}}" type="text" value="{{title}}"/>
+        <small>Posts title will be used if field is left empty.</small>
+    </p>
+
+    <p>
+        <label for="{{item_form_id}}">Select a post or category:</label>
+        <input type="hidden" name="{{item_form_name}}" id="{{item_form_id}}" class="select-select2" value="{{item_type}}:{{item_id}}" style="width:100%" />
+    </p>
+
+    <p>
+        Use:
+        <input id="content-body" name="{{content_type_form_name}}" type="radio" value="body"{% if content_type != 'excerpt' %} checked{% endif %}>
+        <label for="content-body">content</label>
+        <input id="content-excerpt" name="{{content_type_form_name}}" type="radio" value="excerpt"{% if content_type == 'excerpt' %} checked{% endif %}>
+        <label for="content-excerpt">excerpt</label>
+    </p>
+
+    <div class="thumbnail">
+        <div class="thumbnail-wrapper">
+            <p>
+                <input id="{{thumbnail_switch_form_id}}" class="thumbnail-switch-action" name="{{thumbnail_switch_form_name}}" value="on" type="checkbox"{% if thumbnail_switch %} checked{% endif %}>
+                <label for="{{thumbnail_switch_form_id}}">Show thumbnail</label>
+            </p>
+
+            <p class="thumbnail_dropdown_wrapper">
+                <label for="{{thumbnail_size_form_id}}">Select thumbnail size:</label>
+                <select name="{{thumbnail_size_form_name}}" id="{{thumbnail_size_form_id}}">
+                    {% for size in thumbnail_sizes %}
+                        <option value="{{size.name}}"{% if size.name == thumbnail_size %} selected{% endif %}>
+                            {{size.description}}
+                        </option>
+                    {% endfor %}
+                </select>
+            </p>
+        </div>
+    </div>
+
+    <p>
+        <label for="{{length_form_id}}">Length in characters:</label>
+        <input id="{{length_form_id}}" name="{{length_form_name}}" type="text" value="{{length}}" />
+        <small>Shows whole sentences so this value is an approximation.<br>-1 hides the content and 0 shows all.</small>
+    </p>
+
+    <p>
+        <label for="{{link_title_form_id}}">Link title:</label>
+        <input id="{{link_title_form_id}}" name="{{link_title_form_name}}" type="text" value="{{link_title}}" />
+    </p>
+
+    <p>
+        <input type="checkbox" name="{{show_categories_form_name}}" id="{{show_categories_form_id}}" value="on"{% if show_categories %} checked{% endif %}>
+        <label for="{{show_categories_form_id}}">Show categories</label>
+    </p>
+
+    <p>
+        <label for="{{template_form_id}}">Template:</label>
+        <input id="{{template_form_id}}" name="{{template_form_name}}" type="text" value="{{template}}" />
+        <small>The name of your custom template file (.html) located in your theme folder. </small>
+    </p>
+</div>
